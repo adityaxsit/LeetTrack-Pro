@@ -1,0 +1,142 @@
+.navbar {
+  height: 72px;
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+
+  white-space: nowrap;
+}
+
+.logoIcon {
+  color: var(--lava);
+}
+
+
+
+.search {
+  width: 40%;
+  max-width: 500px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 16px;
+
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.search:focus-within {
+  border-color: var(--lava);
+}
+
+.search input {
+  width: 100%;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.search input::placeholder {
+  color: var(--text-secondary);
+}
+
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton,
+.profileButton {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.iconButton:hover,
+.profileButton:hover {
+  border-color: var(--lava);
+}
+
+
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+  .search {
+    width: 45%;
+  }
+
+}
+
+
+
+@media (max-width: 550px) {
+  .logo span:last-child {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 10px;
+  }
+
+  .search {
+    width: auto;
+    flex: 1;
+    margin: 0 8px;
+    margin-left: 30px;
+    padding: 8px 10px;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .iconButton,
+  .profileButton {
+    width: 36px;
+    height: 36px;
+  }
+}
