@@ -1,11 +1,10 @@
 import styles from "./Sidebar.module.css";
 
-function Sidebar() {
+function Sidebar({ sidebarOpen }) {
   return (
-    <aside className={styles.sidebar}>
-
+    <aside className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
+      
       <div className={styles.menu}>
-
         <div className={`${styles.menuItem} ${styles.active}`}>
           <span>▣</span>
           <span>Dashboard</span>
@@ -39,7 +38,6 @@ function Sidebar() {
           <span>▤</span>
           <span>Collections</span>
         </div>
-
       </div>
 
       <div className={styles.bottomMenu}>
@@ -48,7 +46,6 @@ function Sidebar() {
           <span>Settings</span>
         </div>
       </div>
-
     </aside>
   );
 }

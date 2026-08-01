@@ -1,28 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import './App.css'
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import "./App.css";
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
       <div className="appLayout">
-        <Sidebar />
+        <Sidebar sidebarOpen={sidebarOpen} />
 
-        <main className="mainContent">
-        </main>
-
+        <main className="mainContent">{/* Dashboard will come here */}</main>
       </div>
     </>
-  )
+  );
 }
-          
-
-  
-
 
 export default App;

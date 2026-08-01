@@ -1,8 +1,15 @@
 import styles from './Navbar.module.css'; 
 
-function Navbar() {
+function Navbar({ sidebarOpen, setSidebarOpen }) {
   return (
     <nav className={styles.navbar}>
+
+       <button
+        className={styles.menuButton}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? "✕" : "☰"}
+      </button>
 
       <div className={styles.logo}>
         <span className={styles.logoIcon}>#</span>
