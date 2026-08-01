@@ -25,3 +25,12 @@ body {
 #root {
   min-height: 100vh;
 }
+
+.appLayout {
+  display: flex;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 24px;
+}
