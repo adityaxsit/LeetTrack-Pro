@@ -13,7 +13,7 @@ function Navbar({ sidebarOpen, setSidebarOpen }) {
 
       <div className={styles.logo}>
         <span className={styles.logoIcon}>#</span>
-        <span>LeetTrack Pro</span>
+        <span>TrackBack</span>
       </div>
 
       <div className={styles.search}>

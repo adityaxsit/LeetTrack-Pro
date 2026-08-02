@@ -1,12 +1,13 @@
 import styles from "./Sidebar.module.css";
 import { NavLink } from "react-router-dom";
 
-function Sidebar({ sidebarOpen }) {
+function Sidebar({ sidebarOpen,setSidebarOpen }) {
   return (
     <aside className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
       <div className={styles.menu}>
         <NavLink
           to="/dashboard"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -17,6 +18,7 @@ function Sidebar({ sidebarOpen }) {
 
         <NavLink
           to="/problems"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -27,6 +29,7 @@ function Sidebar({ sidebarOpen }) {
 
         <NavLink
           to="/revision"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -37,6 +40,7 @@ function Sidebar({ sidebarOpen }) {
 
         <NavLink
           to="/analytics"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -49,6 +53,7 @@ function Sidebar({ sidebarOpen }) {
 
         <NavLink
           to="/preparation"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -61,6 +66,7 @@ function Sidebar({ sidebarOpen }) {
 
         <NavLink
           to="/collections"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
@@ -73,6 +79,7 @@ function Sidebar({ sidebarOpen }) {
       <div className={styles.bottomMenu}>
         <NavLink
           to="/settings"
+          onClick={()=> setSidebarOpen(false)}
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.active : ""}`
           }
