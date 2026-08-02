@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import { Outlet } from "react-router-dom";
+
 import "./App.css";
 
 function App() {
@@ -13,7 +15,9 @@ function App() {
       <div className="appLayout">
         <Sidebar sidebarOpen={sidebarOpen} />
 
-        <main className="mainContent">{/* Dashboard will come here */}</main>
+        <main className="mainContent">
+          <Outlet />
+        </main>
       </div>
     </>
   );

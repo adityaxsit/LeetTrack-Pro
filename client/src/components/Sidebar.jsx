@@ -1,50 +1,85 @@
 import styles from "./Sidebar.module.css";
+import { NavLink } from "react-router-dom";
 
 function Sidebar({ sidebarOpen }) {
   return (
     <aside className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
-      
       <div className={styles.menu}>
-        <div className={`${styles.menuItem} ${styles.active}`}>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>▣</span>
           <span>Dashboard</span>
-        </div>
+        </NavLink>
 
-        <div className={styles.menuItem}>
+        <NavLink
+          to="/problems"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>✓</span>
           <span>Problems</span>
-        </div>
+        </NavLink>
 
-        <div className={styles.menuItem}>
+        <NavLink
+          to="/revision"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>↻</span>
           <span>Revision</span>
-        </div>
+        </NavLink>
 
-        <div className={styles.menuItem}>
+        <NavLink
+          to="/analytics"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>📈</span>
           <span>Analytics</span>
-        </div>
+        </NavLink>
 
         <p className={styles.sectionTitle}>PREPARATION</p>
 
-        <div className={styles.menuItem}>
-          <span>🎯</span>
+        <NavLink
+          to="/preparation"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
+          <span>📈</span>
           <span>Preparation</span>
-        </div>
+        </NavLink>
 
         <p className={styles.sectionTitle}>LIBRARY</p>
 
-        <div className={styles.menuItem}>
+        <NavLink
+          to="/collections"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>▤</span>
           <span>Collections</span>
-        </div>
+        </NavLink>
       </div>
 
       <div className={styles.bottomMenu}>
-        <div className={styles.menuItem}>
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `${styles.menuItem} ${isActive ? styles.active : ""}`
+          }
+        >
           <span>⚙</span>
           <span>Settings</span>
-        </div>
+        </NavLink>
       </div>
     </aside>
   );

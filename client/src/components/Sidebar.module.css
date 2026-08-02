@@ -19,6 +19,7 @@
 }
 
 .menuItem {
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -39,7 +40,7 @@
   background-color: #1c1c1c;
 }
 
-.active {
+.menuItem.active {
   color: var(--lava);
   background-color: rgba(255, 77, 0, 0.1);
 }
