@@ -8,41 +8,46 @@ import Preparation from "./pages/Preparation.jsx";
 import Collections from "./pages/Collections.jsx";
 import Settings from "./pages/Settings.jsx";
 import Revision from "./pages/Revision.jsx";
+import Home from "./pages/Home.jsx";
 import App from "./App.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+
+  {
     element: <App />,
 
     children: [
       {
-        path: "/dashboard",
+        path: "dashboard",
         element: <Dashboard />,
       },
       {
-        path: "/problems",
+        path: "problems",
         element: <Problems />,
       },
       {
-        path: "/analytics",
+        path: "revision",
+        element: <Revision />,
+      },
+      {
+        path: "analytics",
         element: <Analytics />,
       },
       {
-        path: "/preparation",
+        path: "preparation",
         element: <Preparation />,
       },
       {
-        path: "/collections",
+        path: "collections",
         element: <Collections />,
       },
       {
-        path: "/settings",
+        path: "settings",
         element: <Settings />,
-      },
-      {
-        path: "/revision",
-        element: <Revision />,
       },
     ],
   },

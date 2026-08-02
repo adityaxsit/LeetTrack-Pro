@@ -1,0 +1,101 @@
+.navbar {
+  height: 72px;
+  padding: 0 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--text-primary);
+  text-decoration: none;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.logoIcon {
+  color: var(--lava);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLinks a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.navLinks a:hover {
+  color: var(--text-primary);
+}
+
+.loginButton,
+.signupButton {
+  padding: 9px 18px;
+
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.loginButton {
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.loginButton:hover {
+  border-color: var(--lava);
+}
+
+.signupButton {
+  color: white;
+  background-color: var(--lava);
+  border: 1px solid var(--lava);
+}
+
+.signupButton:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 18px;
+  }
+
+  .navLinks {
+    gap: 8px;
+  }
+
+  .navLinks > a {
+    display: none;
+  }
+
+  .loginButton,
+  .signupButton {
+    padding: 8px 12px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .logoIcon {
+    font-size: 25px;
+  }
+}

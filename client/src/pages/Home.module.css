@@ -1,0 +1,210 @@
+.home {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+
+
+.hero {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.badge {
+  margin-bottom: 22px;
+  padding: 7px 14px;
+
+  color: var(--lava);
+  background-color: rgba(255, 77, 0, 0.08);
+  border: 1px solid rgba(255, 77, 0, 0.25);
+  border-radius: 20px;
+
+  font-size: 13px;
+}
+
+.hero h1 {
+  max-width: 850px;
+  margin: 0;
+
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: var(--lava);
+}
+
+.hero > p {
+  max-width: 650px;
+  margin: 24px 0 32px;
+
+  color: var(--text-secondary);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 12px 24px;
+
+  border-radius: 9px;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.primaryButton {
+  color: white;
+  background-color: var(--lava);
+  border: 1px solid var(--lava);
+}
+
+.secondaryButton {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.primaryButton:hover {
+  opacity: 0.9;
+}
+
+.secondaryButton:hover {
+  border-color: var(--lava);
+}
+
+
+
+
+.features {
+  padding: 100px 8%;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.sectionHeading {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.sectionHeading > p {
+  margin-bottom: 10px;
+
+  color: var(--lava);
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+
+  font-size: 36px;
+}
+
+.featureGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.featureCard {
+  padding: 28px 24px;
+
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 77, 0, 0.5);
+}
+
+.featureIcon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  color: var(--lava);
+  background-color: rgba(255, 77, 0, 0.1);
+  border-radius: 9px;
+
+  font-size: 21px;
+}
+
+.featureCard h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.featureCard p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+
+
+@media (max-width: 900px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .hero {
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .hero > p {
+    font-size: 15px;
+  }
+
+  .features {
+    padding: 70px 20px;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeading h2 {
+    font-size: 30px;
+  }
+}
