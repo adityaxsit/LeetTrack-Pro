@@ -28,9 +28,15 @@ body {
 
 .appLayout {
   display: flex;
+
+  height: calc(100vh - 72px);
+  overflow: hidden;
 }
 
 .mainContent {
   flex: 1;
   padding: 24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }

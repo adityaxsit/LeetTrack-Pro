@@ -1,6 +1,6 @@
 .dashboard {
   width: 100%;
-  padding: 36px;
+  
   color: var(--text-primary);
 }
 
@@ -219,6 +219,192 @@
 }
 
 
+
+/* MILESTONES + COMPANIES */
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  
+  margin-top: 16px;
+}
+
+
+/* MILESTONES */
+
+.milestoneList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.milestoneItem {
+  width: 100%;
+}
+
+.milestoneInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  margin-bottom: 9px;
+  
+  font-size: 13px;
+}
+
+.milestoneInfo span:last-child {
+  color: var(--text-secondary);
+}
+
+.progressBar {
+  width: 100%;
+  height: 7px;
+  
+  overflow: hidden;
+  
+  background-color: var(--border);
+  border-radius: 10px;
+}
+
+.progressFill {
+  height: 100%;
+  
+  background-color: var(--lava);
+  border-radius: inherit;
+}
+
+
+/* COMPANIES */
+
+.companyList {
+  display: flex;
+  flex-direction: column;
+}
+
+.companyItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 12px 0;
+  
+  border-bottom: 1px solid var(--border);
+  
+  font-size: 14px;
+}
+
+.companyItem:last-child {
+  border-bottom: none;
+}
+
+.companySolved {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* RECENT PROBLEMS */
+
+.recentSection {
+  margin-top: 16px;
+  padding: 24px;
+
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.sectionHeader .cardLabel {
+  margin: 0;
+}
+
+.viewAll {
+  color: var(--lava);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.viewAll:hover {
+  opacity: 0.8;
+}
+
+
+/* TABLE */
+
+.problemTable {
+  width: 100%;
+}
+
+.tableHeader,
+.problemRow {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1fr 0.8fr;
+  gap: 16px;
+
+  align-items: center;
+}
+
+.tableHeader {
+  padding: 0 12px 10px;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.problemRow {
+  padding: 14px 12px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.problemTitle {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/*quote section*/
+
+.quoteSection {
+  width: 55%;
+  margin: 20px 0 0 auto; 
+
+  padding: 16px 20px;
+
+  border-left: 3px solid var(--lava);
+}
+
+.quoteText {
+  margin: 0 0 6px;
+
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.quoteAuthor {
+  display: block;
+  text-align: right;
+
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1100px) {
@@ -227,8 +413,27 @@
   }
 }
 @media (max-width: 900px) {
-  .progressGrid {
+  
+  .progressGrid,
+  .insightsGrid {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .tableHeader {
+    display: none;
+  }
+
+  .problemRow {
+    grid-template-columns: 1fr auto;
+  }
+
+  .problemRow span:nth-child(2),
+  .problemRow span:nth-child(3) {
+    display: none;
+  }
+  .quoteSection {
+    width: 100%;
   }
 }
 @media (max-width: 600px) {
@@ -248,3 +453,4 @@
     grid-template-columns: 1fr;
   }
 }
+
