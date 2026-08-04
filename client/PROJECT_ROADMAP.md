@@ -1,15 +1,15 @@
-# LeetTrack — Project Roadmap
+# TrackBack — Project Roadmap
 
 ## What this app is
 
-LeetTrack is not a coding platform — it's the memory and tracking layer on top of
-platforms like LeetCode, Codeforces, and GFG. Users solve problems elsewhere; LeetTrack
+**TrackBack** is not a coding platform — it's the memory and tracking layer on top of
+platforms like LeetCode, Codeforces, and GFG. Users solve problems elsewhere; **TrackBack**
 logs what they solved, tells them what to revisit and when (spaced repetition, not
 guesswork), and shows where they actually stand — by topic, and by company tag —
 against real placement prep goals.
 
 **Core insight:** most students re-solve problems they already know and forget the ones
-they don't, because there's no feedback loop. LeetTrack is that feedback loop.
+they don't, because there's no feedback loop. **TrackBack** is that feedback loop.
 
 ---
 
@@ -163,7 +163,7 @@ RevisionSchedule {
 
 ## One-paragraph pitch (for README / interviews)
 
-> LeetTrack lets users log problems they've solved on external platforms — manually,
+> **TrackBack** lets users log problems they've solved on external platforms — manually,
 > or via automated sync with LeetCode's public GraphQL endpoint and Codeforces'
 > official API — storing only metadata and source links, never copied problem
 > content. Once logged, all product features (streaks, analytics, spaced-repetition
