@@ -1,28 +1,83 @@
 import styles from "./Dashboard.module.css";
 import { Link } from "react-router-dom";
-import {
-  dashboardStats,
-  continueProblem,
-  revisionTopics,
-  companyProgress,
-  milestones,
-  recentProblems,
-  dailyQuote,
-} from "../data/dashboardData";
+import { useEffect, useState } from "react";
+
 
 function Dashboard() {
+  const [dashboardData, setDashboardData] = useState(null);
+
+  useEffect(() => {
+    fetch("/data/dashboard.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setDashboardData(data);
+      });
+    //console.log("fetching data from dashboard.json");
+  }, []);
+  //console.log("fetched data from dashboard.json", dashboardData);
+  const stats = dashboardData?.stats;
+
+  const continueStat=dashboardData?.continueProblem;
+
+  const revisionTopics = dashboardData?.revisionTopics;
+
+  const milestones = dashboardData?.milestones ?? [];
+
+  const companyProgress = dashboardData?.companyProgress ?? [];
+
+  const recentProblems = dashboardData?.recentProblems ?? [];
+
+  const dailyQuote = dashboardData?.dailyQuote ?? {
+    text: "Discipline is choosing between what you want now and what you want most.",
+    author: "Abraham Lincoln"
+  };
+
+  const statsCards = stats
+    ? [
+        {
+          id: 1,
+          title: "Problems Solved",
+          value: stats.problemsSolved,
+          info: `+${stats.solvedThisWeek} this week`,
+        },
+        {
+          id: 2,
+          title: "Current Streak",
+          value: `${stats.currentStreak} days`,
+          info: `Best: ${stats.bestStreak} days`,
+        },
+        {
+          id: 3,
+          title: "Due for Revision",
+          value: stats.revisionDue,
+          action: {
+            label: "Start revising",
+            path: "/revision",
+          },
+        },
+        {
+          id: 4,
+          title: "Weekly Goal",
+          value: `${stats.weeklySolved} / ${stats.weeklyGoal}`,
+          info: `${Math.round(
+            (stats.weeklySolved / stats.weeklyGoal) * 100,
+          )}% complete`,
+        },
+      ]
+    : [];
+
   return (
     <div className={styles.dashboard}>
       <section className={styles.heading}>
         <h1>
-          Welcome back, <span>Aditya</span> 👋
+          Welcome back, <span>{dashboardData?.user.name}</span> 👋
         </h1>
 
         <p>Here's where you stand.</p>
       </section>
 
       <section className={styles.statsGrid}>
-        {dashboardStats.map((stat) => (
+        {statsCards.map((stat) => (
           <div className={styles.statCard} key={stat.id}>
             <p className={styles.statTitle}>{stat.title}</p>
 
@@ -45,31 +100,34 @@ function Dashboard() {
         ))}
       </section>
       <section className={styles.progressGrid}>
+
+        
         {/* Continue card */}
 
-        <div className={styles.dashboardCard}>
+        { continueStat && (<div className={styles.dashboardCard}>
           <p className={styles.cardLabel}>Continue Where You Left Off</p>
 
           <div className={styles.problemContent}>
-            <h2>{continueProblem.title}</h2>
+            <h2>{continueStat.title}</h2>
 
             <p className={styles.problemMeta}>
-              {continueProblem.topic}
+              {continueStat.topic}
               <span>•</span>
-              {continueProblem.difficulty}
+              {continueStat.difficulty}
             </p>
 
             <p className={styles.lastWorked}>
-              Last worked on {continueProblem.lastWorkedAt}
+              Last worked on {continueStat.lastWorkedAt}
             </p>
           </div>
 
           <button className={styles.resumeButton}>Resume →</button>
-        </div>
+        </div>)}
 
         {/* Revision card */}
 
-        <div className={styles.dashboardCard}>
+        {revisionTopics &&
+        (<div className={styles.dashboardCard}>
           <p className={styles.cardLabel}>Revision Focus</p>
 
           <h2 className={styles.revisionHeading}>Topics needing attention</h2>
@@ -83,9 +141,10 @@ function Dashboard() {
               </div>
             ))}
           </div>
-        </div>
+        </div>)}
       </section>
       <section className={styles.insightsGrid}>
+
         {/* MILESTONES */}
 
         <div className={styles.dashboardCard}>
@@ -135,6 +194,8 @@ function Dashboard() {
           </div>
         </div>
       </section>
+  
+      {/*recent solved problems section*/}
 
       <section className={styles.recentSection}>
         <div className={styles.sectionHeader}>
@@ -166,6 +227,8 @@ function Dashboard() {
           ))}
         </div>
       </section>
+
+      {/*daily quote section*/}
       <section className={styles.quoteSection}>
         <p className={styles.quoteText}>“{dailyQuote.text}”</p>
 
