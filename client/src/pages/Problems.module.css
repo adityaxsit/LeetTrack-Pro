@@ -1,0 +1,209 @@
+.problemsPage {
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.statCard {
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.statLabel {
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.statCard h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.controlsCard {
+  margin-bottom: 16px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.controlsRow {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 12px;
+}
+
+.searchWrap,
+.selectWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.searchWrap label,
+.selectWrap label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.searchWrap input,
+.selectWrap select {
+  width: 100%;
+  padding: 10px 12px;
+  color: #7f8792;
+  background-color: #0f0f0f;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+.tableCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tableHeader,
+.tableRow {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1.2fr 0.8fr 1.4fr 0.8fr 0.9fr 1.8fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.tableHeader {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tableRow {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.problemTitle {
+  color: var(--text-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.problemTitle:hover {
+  color: var(--lava-soft);
+}
+
+.platformBadge {
+  justify-self: start;
+  padding: 3px 9px;
+  color: #ffb692;
+  background-color: rgba(255, 77, 0, 0.12);
+  border: 1px solid rgba(255, 77, 0, 0.25);
+  border-radius: 999px;
+}
+
+.difficulty {
+  font-weight: 600;
+}
+
+.easy {
+  color: #7fd27f;
+}
+
+.medium {
+  color: #ffc14a;
+}
+
+.hard {
+  color: #ff7f7f;
+}
+
+.companyTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.companyTag {
+  padding: 2px 8px;
+  color: var(--text-primary);
+  background-color: #181818;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.revisionYes {
+  color: #ff9a66;
+}
+
+.revisionNo {
+  color: #7fd27f;
+}
+
+.notes {
+  margin: 0;
+  color: #8f98a5;
+  line-height: 1.4;
+}
+
+@media (max-width: 1280px) {
+  .controlsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "problems": [
+    {
+      "id": 1,
+      "title": "Two Sum",
+      "platform": "LeetCode",
+      "problemUrl": "https://leetcode.com/problems/two-sum/",
+      "topic": "Arrays",
+      "difficulty": "Easy",
+      "companies": ["Amazon", "Google"],
+      "revision": false,
+      "solvedAt": "2026-08-04T14:30:00Z",
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "title": "Lowest Common Ancestor of a Binary Tree",
+      "platform": "LeetCode",
+      "problemUrl": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+      "topic": "Trees",
+      "difficulty": "Medium",
+      "companies": ["Amazon", "Microsoft"],
+      "revision": true,
+      "solvedAt": "2026-08-02T11:00:00Z",
+      "notes": "Revise recursive approach"
+    },
+    {
+      "id": 3,
+      "title": "Coin Change",
+      "platform": "LeetCode",
+      "problemUrl": "https://leetcode.com/problems/coin-change/",
+      "topic": "Dynamic Programming",
+      "difficulty": "Medium",
+      "companies": ["Google", "Amazon"],
+      "revision": true,
+      "solvedAt": "2026-07-30T09:15:00Z",
+      "notes": "Revise space optimization"
+    },
+    {
+      "id": 4,
+      "title": "Detect Loop in Linked List",
+      "platform": "GeeksforGeeks",
+      "problemUrl": "https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1",
+      "topic": "Linked List",
+      "difficulty": "Medium",
+      "companies": ["Amazon", "Microsoft"],
+      "revision": false,
+      "solvedAt": "2026-07-28T16:20:00Z",
+      "notes": "Solved using Floyd's cycle detection"
+    },
+    {
+      "id": 5,
+      "title": "Merge Sort",
+      "platform": "GeeksforGeeks",
+      "problemUrl": "https://www.geeksforgeeks.org/problems/merge-sort/1",
+      "topic": "Sorting",
+      "difficulty": "Medium",
+      "companies": ["Microsoft"],
+      "revision": true,
+      "solvedAt": "2026-07-25T10:00:00Z",
+      "notes": "Revise merge implementation"
+    },
+    {
+      "id": 6,
+      "title": "BFS of Graph",
+      "platform": "GeeksforGeeks",
+      "problemUrl": "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
+      "topic": "Graphs",
+      "difficulty": "Easy",
+      "companies": ["Amazon", "Google"],
+      "revision": false,
+      "solvedAt": "2026-07-23T12:10:00Z",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "title": "Watermelon",
+      "platform": "Codeforces",
+      "problemUrl": "https://codeforces.com/problemset/problem/4/A",
+      "topic": "Math",
+      "difficulty": "Easy",
+      "companies": [],
+      "revision": false,
+      "solvedAt": "2026-07-20T18:30:00Z",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "title": "Way Too Long Words",
+      "platform": "Codeforces",
+      "problemUrl": "https://codeforces.com/problemset/problem/71/A",
+      "topic": "Strings",
+      "difficulty": "Easy",
+      "companies": [],
+      "revision": false,
+      "solvedAt": "2026-07-19T13:10:00Z",
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "title": "Next Round",
+      "platform": "Codeforces",
+      "problemUrl": "https://codeforces.com/problemset/problem/158/A",
+      "topic": "Arrays",
+      "difficulty": "Easy",
+      "companies": [],
+      "revision": true,
+      "solvedAt": "2026-07-18T15:20:00Z",
+      "notes": "Solve again without looking at previous code"
+    },
+    {
+      "id": 10,
+      "title": "Number of Islands",
+      "platform": "LeetCode",
+      "problemUrl": "https://leetcode.com/problems/number-of-islands/",
+      "topic": "Graphs",
+      "difficulty": "Medium",
+      "companies": ["Amazon", "Google", "Microsoft"],
+      "revision": true,
+      "solvedAt": "2026-07-15T12:45:00Z",
+      "notes": "Practice both DFS and BFS"
+    },
+    {
+    "id": 11,
+    "title": "Trapping Rain Water II",
+    "platform": "LeetCode",
+    "problemUrl": "https://leetcode.com/problems/trapping-rain-water-ii/",
+    "topic": "Graphs / Heaps",
+    "difficulty": "Hard",
+    "companies": ["Google", "Amazon", "Twitter"],
+    "revision": true,
+    "solvedAt": "2026-08-01T10:15:00Z",
+    "notes": "Used a min-heap initialized with boundary cells, then processed inward (BFS-style)."
+  },
+  {
+    "id": 12,
+    "title": "Word Ladder II",
+    "platform": "GeeksforGeeks",
+    "problemUrl": "https://www.geeksforgeeks.org/problems/word-ladder-ii/1",
+    "topic": "Graphs / Backtracking",
+    "difficulty": "Hard",
+    "companies": ["Amazon", "Microsoft", "Meta"],
+    "revision": false,
+    "solvedAt": "2026-08-03T16:30:00Z",
+    "notes": "BFS to find shortest distance to each word, then DFS backtracking to build all valid paths."
+  },
+  {
+    "id": 13,
+    "title": "Tree Requests",
+    "platform": "Codeforces",
+    "problemUrl": "https://codeforces.com/problemset/problem/570/D",
+    "topic": "Trees / Bitmasking",
+    "difficulty": "Hard",
+    "companies": ["Yandex", "JetBrains"],
+    "revision": true,
+    "solvedAt": "2026-08-05T09:20:00Z",
+    "notes": "Combined Small-to-Large merging (Sack) with bitmasks to check palindrome possibilities offline."
+  }
+  ]
+}
