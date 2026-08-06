@@ -1,0 +1,42 @@
+:root {
+  --bg-primary: #090909;
+  --bg-secondary: #121212;
+
+  --lava: #ff4d00;
+  --lava-red: #ff2d2d;
+  --lava-soft: #ff7043;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #9ca3af;
+
+  --border: #262626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.appLayout {
+  display: flex;
+
+  height: calc(100vh - 72px);
+  overflow: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -1,4 +1,5 @@
 import { StrictMode } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./pages/Dashboard.jsx";
@@ -10,6 +11,7 @@ import Settings from "./pages/Settings.jsx";
 import Revision from "./pages/Revision.jsx";
 import Home from "./pages/Home.jsx";
 import App from "./App.jsx";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

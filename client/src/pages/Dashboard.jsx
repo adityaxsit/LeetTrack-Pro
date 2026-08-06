@@ -2,22 +2,36 @@ import styles from "./Dashboard.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-
 function Dashboard() {
   const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/data/dashboard.json")
       .then((response) => response.json())
       .then((data) => {
         setDashboardData(data);
+        setLoading(false);
       });
     //console.log("fetching data from dashboard.json");
   }, []);
   //console.log("fetched data from dashboard.json", dashboardData);
+
+  if (loading) {
+    return (
+      <div
+        className="spinner-grow"
+        style={{width: "3rem", height: "3rem",alignSelf: "center", marginTop: "2rem"}}
+        role="status"
+      >
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
+
   const stats = dashboardData?.stats;
 
-  const continueStat=dashboardData?.continueProblem;
+  const continueStat = dashboardData?.continueProblem;
 
   const revisionTopics = dashboardData?.revisionTopics;
 
@@ -29,7 +43,7 @@ function Dashboard() {
 
   const dailyQuote = dashboardData?.dailyQuote ?? {
     text: "Discipline is choosing between what you want now and what you want most.",
-    author: "Abraham Lincoln"
+    author: "Abraham Lincoln",
   };
 
   const statsCards = stats
@@ -100,51 +114,51 @@ function Dashboard() {
         ))}
       </section>
       <section className={styles.progressGrid}>
-
-        
         {/* Continue card */}
 
-        { continueStat && (<div className={styles.dashboardCard}>
-          <p className={styles.cardLabel}>Continue Where You Left Off</p>
+        {continueStat && (
+          <div className={styles.dashboardCard}>
+            <p className={styles.cardLabel}>Continue Where You Left Off</p>
 
-          <div className={styles.problemContent}>
-            <h2>{continueStat.title}</h2>
+            <div className={styles.problemContent}>
+              <h2>{continueStat.title}</h2>
 
-            <p className={styles.problemMeta}>
-              {continueStat.topic}
-              <span>•</span>
-              {continueStat.difficulty}
-            </p>
+              <p className={styles.problemMeta}>
+                {continueStat.topic}
+                <span>•</span>
+                {continueStat.difficulty}
+              </p>
 
-            <p className={styles.lastWorked}>
-              Last worked on {continueStat.lastWorkedAt}
-            </p>
+              <p className={styles.lastWorked}>
+                Last worked on {continueStat.lastWorkedAt}
+              </p>
+            </div>
+
+            <button className={styles.resumeButton}>Resume →</button>
           </div>
-
-          <button className={styles.resumeButton}>Resume →</button>
-        </div>)}
+        )}
 
         {/* Revision card */}
 
-        {revisionTopics &&
-        (<div className={styles.dashboardCard}>
-          <p className={styles.cardLabel}>Revision Focus</p>
+        {revisionTopics && (
+          <div className={styles.dashboardCard}>
+            <p className={styles.cardLabel}>Revision Focus</p>
 
-          <h2 className={styles.revisionHeading}>Topics needing attention</h2>
+            <h2 className={styles.revisionHeading}>Topics needing attention</h2>
 
-          <div className={styles.revisionList}>
-            {revisionTopics.map((item) => (
-              <div className={styles.revisionItem} key={item.id}>
-                <span>{item.topic}</span>
+            <div className={styles.revisionList}>
+              {revisionTopics.map((item) => (
+                <div className={styles.revisionItem} key={item.id}>
+                  <span>{item.topic}</span>
 
-                <span className={styles.dueCount}>{item.due} due</span>
-              </div>
-            ))}
+                  <span className={styles.dueCount}>{item.due} due</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>)}
+        )}
       </section>
       <section className={styles.insightsGrid}>
-
         {/* MILESTONES */}
 
         <div className={styles.dashboardCard}>
@@ -194,7 +208,7 @@ function Dashboard() {
           </div>
         </div>
       </section>
-  
+
       {/*recent solved problems section*/}
 
       <section className={styles.recentSection}>
