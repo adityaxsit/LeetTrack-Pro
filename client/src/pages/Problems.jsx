@@ -4,6 +4,12 @@ import styles from "./Problems.module.css";
 function Problems() {
   const [problems, setProblems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [platform, setPlatform] = useState("All platforms");
+  const [difficulty, setDifficulty] = useState("All difficulties");
+  const [revision, setRevision] = useState("All");
+  const [sortBy, setSortBy] = useState("Newest solved");
+  const [company, setCompany] = useState("All companies");
 
   useEffect(() => {
     fetch("/data/problems.json")
@@ -13,6 +19,65 @@ function Problems() {
         setLoading(false);
       });
   }, []);
+
+  const handleRevisionToggle = (id) => {
+    setProblems(
+      problems.map((problem) =>
+        problem.id === id
+          ? { ...problem, revision: !problem.revision }
+          : problem,
+      ),
+    );
+  };
+
+  const handleClearFilters = () => {
+    setSearchTerm("");
+    setPlatform("All platforms");
+    setDifficulty("All difficulties");
+    setRevision("All");
+    setCompany("All companies");
+    setSortBy("Newest solved");
+  };
+
+  const filteredProblems = problems.filter((problem) => {
+    const searchMatches = problem.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const platformMatches =
+      platform === "All platforms" || problem.platform === platform;
+
+    const difficultyMatches =
+      difficulty === "All difficulties" || problem.difficulty === difficulty;
+
+    const revisionMatches =
+      revision === "All" ||
+      (revision === "Needed" && problem.revision) ||
+      (revision === "Not Needed" && !problem.revision);
+
+    const companyMatches =
+      company === "All companies" || problem.companies.includes(company);
+
+    return (
+      searchMatches &&
+      platformMatches &&
+      difficultyMatches &&
+      revisionMatches &&
+      companyMatches
+    );
+  });
+
+  const sortedProblems = [...filteredProblems].sort((a, b) => {
+    if (sortBy === "Newest solved") {
+      return new Date(b.solvedAt) - new Date(a.solvedAt);
+    }
+
+    if (sortBy === "Oldest solved") {
+      return new Date(a.solvedAt) - new Date(b.solvedAt);
+    }
+
+    return 0;
+  });
 
   if (loading) {
     return (
@@ -32,7 +97,9 @@ function Problems() {
   }
 
   const totalSolved = problems.length;
-  const hardCount = problems.filter((problem) => problem.difficulty === "Hard").length;
+  const hardCount = problems.filter(
+    (problem) => problem.difficulty === "Hard",
+  ).length;
   const revisionCount = problems.filter((problem) => problem.revision).length;
 
   return (
@@ -67,23 +134,32 @@ function Problems() {
               id="problemSearch"
               type="text"
               placeholder="Search by title..."
-              
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           <div className={styles.selectWrap}>
             <label htmlFor="platformFilter">Platform</label>
-            <select id="platformFilter" >
+            <select
+              id="platformFilter"
+              value={platform}
+              onChange={(e) => setPlatform(e.target.value)}
+            >
               <option>All platforms</option>
               <option>LeetCode</option>
               <option>Codeforces</option>
-              <option> HackerRank </option>
+              <option>GeeksforGeeks</option>
             </select>
           </div>
 
           <div className={styles.selectWrap}>
             <label htmlFor="difficultyFilter">Difficulty</label>
-            <select id="difficultyFilter" >
+            <select
+              id="difficultyFilter"
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
+            >
               <option>All difficulties</option>
               <option>Easy</option>
               <option>Medium</option>
@@ -93,21 +169,46 @@ function Problems() {
 
           <div className={styles.selectWrap}>
             <label htmlFor="revisionFilter">Revision</label>
-            <select id="revisionFilter" >
+            <select
+              id="revisionFilter"
+              value={revision}
+              onChange={(e) => setRevision(e.target.value)}
+            >
               <option>All</option>
               <option>Needed</option>
-              <option>Not Needed</option> 
+              <option>Not Needed</option>
+            </select>
+          </div>
+          <div className={styles.selectWrap}>
+            <label htmlFor="companyFilter">Company</label>
+
+            <select
+              id="companyFilter"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+            >
+              <option>All companies</option>
+              <option>Amazon</option>
+              <option>Google</option>
+              <option>Microsoft</option>
             </select>
           </div>
 
           <div className={styles.selectWrap}>
             <label htmlFor="sortBy">Sort</label>
-            <select id="sortBy" >
+            <select
+              id="sortBy"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
               <option>Newest solved</option>
               <option>Oldest solved</option>
-              <option>Company</option>
             </select>
           </div>
+          <button className={styles.resetButton} onClick={handleClearFilters}>
+            <i className="bi bi-arrow-counterclockwise"></i>
+            <span>Reset</span>
+          </button>
         </div>
       </section>
 
@@ -123,42 +224,55 @@ function Problems() {
           <span>Notes</span>
         </div>
 
-        {problems.map((problem) => (
-          <div className={styles.tableRow} key={problem.id}>
-            <a
-              className={styles.problemTitle}
-              href={problem.problemUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {problem.title}
-            </a>
-
-            <span className={styles.platformBadge}>{problem.platform}</span>
-
-            <span>{problem.topic}</span>
-
-            <span className={`${styles.difficulty} ${styles[problem.difficulty.toLowerCase()]}`}>
-              {problem.difficulty}
-            </span>
-
-            <div className={styles.companyTags}>
-              {problem.companies.map((company) => (
-                <span className={styles.companyTag} key={company}>
-                  {company}
-                </span>
-              ))}
-            </div>
-
-            <span className={problem.revision ? styles.revisionYes : styles.revisionNo}>
-              {problem.revision ? "Needed" : "Done"}
-            </span>
-
-            <span>{new Date(problem.solvedAt).toLocaleDateString()}</span>
-
-            <p className={styles.notes}>{problem.notes}</p>
+        {sortedProblems.length === 0 ? (
+          <div className={styles.emptyState}>
+            No problems match your filters.
           </div>
-        ))}
+        ) : (
+          sortedProblems.map((problem) => (
+            <div className={styles.tableRow} key={problem.id}>
+              <a
+                className={styles.problemTitle}
+                href={problem.problemUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {problem.title}
+              </a>
+
+              <span className={styles.platformBadge}>{problem.platform}</span>
+
+              <span>{problem.topic}</span>
+
+              <span
+                className={`${styles.difficulty} ${styles[problem.difficulty.toLowerCase()]}`}
+              >
+                {problem.difficulty}
+              </span>
+
+              <div className={styles.companyTags}>
+                {problem.companies.map((company) => (
+                  <span className={styles.companyTag} key={company}>
+                    {company}
+                  </span>
+                ))}
+              </div>
+
+              <button
+                onClick={() => handleRevisionToggle(problem.id)}
+                className={
+                  problem.revision ? styles.revisionYes : styles.revisionNo
+                }
+              >
+                {problem.revision ? "Needed" : "Not Needed"}
+              </button>
+
+              <span>{new Date(problem.solvedAt).toLocaleDateString()}</span>
+
+              <p className={styles.notes}>{problem.notes}</p>
+            </div>
+          ))
+        )}
       </section>
     </div>
   );

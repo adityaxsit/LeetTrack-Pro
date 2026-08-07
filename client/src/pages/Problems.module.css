@@ -3,6 +3,10 @@
   color: var(--text-primary);
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .header {
   margin-bottom: 24px;
 }
@@ -16,6 +20,41 @@
 .header p {
   margin: 0;
   color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* =========================
+   STATS
+========================= */
+.resetButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 10px 8px;
+
+  color: var(--text-secondary);
+  background-color: #0f0f0f;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.resetButton:hover {
+  color: var(--lava-soft);
+  border-color: var(--lava-soft);
+  background-color: rgba(255, 77, 0, 0.08);
+}
+
+.resetButton i {
   font-size: 14px;
 }
 
@@ -48,6 +87,10 @@
   font-weight: 600;
 }
 
+/* =========================
+   CONTROLS
+========================= */
+
 .controlsCard {
   margin-bottom: 16px;
   padding: 20px;
@@ -58,8 +101,9 @@
 
 .controlsRow {
   display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr);
+  grid-template-columns:  2fr repeat(5, 1fr) auto;
   gap: 12px;
+  align-items: end;
 }
 
 .searchWrap,
@@ -88,19 +132,38 @@
   outline: none;
 }
 
+/* =========================
+   TABLE
+========================= */
+
 .tableCard {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden;
+
+  /* Table scrolls instead of breaking on smaller screens */
+  overflow-x: auto;
 }
 
 .tableHeader,
 .tableRow {
   display: grid;
-  grid-template-columns: 1.7fr 1fr 1.2fr 0.8fr 1.4fr 0.8fr 0.9fr 1.8fr;
+
+  grid-template-columns:
+    1.7fr
+    1fr
+    1.2fr
+    0.8fr
+    1.4fr
+    0.8fr
+    0.9fr
+    1.8fr;
+
   gap: 12px;
   align-items: start;
+
+  /* Preserve table structure on smaller screens */
+  min-width: 1000px;
 }
 
 .tableHeader {
@@ -123,6 +186,10 @@
   border-bottom: none;
 }
 
+/* =========================
+   PROBLEM TITLE
+========================= */
+
 .problemTitle {
   color: var(--text-primary);
   font-weight: 500;
@@ -133,6 +200,10 @@
   color: var(--lava-soft);
 }
 
+/* =========================
+   PLATFORM
+========================= */
+
 .platformBadge {
   justify-self: start;
   padding: 3px 9px;
@@ -141,6 +212,10 @@
   border: 1px solid rgba(255, 77, 0, 0.25);
   border-radius: 999px;
 }
+
+/* =========================
+   DIFFICULTY
+========================= */
 
 .difficulty {
   font-weight: 600;
@@ -158,6 +233,10 @@
   color: #ff7f7f;
 }
 
+/* =========================
+   COMPANY TAGS
+========================= */
+
 .companyTags {
   display: flex;
   flex-wrap: wrap;
@@ -173,6 +252,19 @@
   font-size: 12px;
 }
 
+/* =========================
+   REVISION
+========================= */
+
+.revisionYes,
+.revisionNo {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
 .revisionYes {
   color: #ff9a66;
 }
@@ -181,11 +273,21 @@
   color: #7fd27f;
 }
 
+/* =========================
+   NOTES
+========================= */
+
 .notes {
   margin: 0;
   color: #8f98a5;
   line-height: 1.4;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablet */
 
 @media (max-width: 1280px) {
   .controlsRow {
@@ -193,17 +295,26 @@
   }
 }
 
-@media (max-width: 1024px) {
+/* Small tablet */
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .controlsRow {
+    grid-template-columns: 1fr;
+  }
+
   .statsGrid {
     grid-template-columns: 1fr;
   }
 
-  .tableHeader {
-    display: none;
-  }
-
-  .tableRow {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .header h1 {
+    font-size: 24px;
   }
 }
