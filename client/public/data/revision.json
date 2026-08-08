@@ -1,0 +1,95 @@
+{
+  "revisions": [
+    {
+      "id": 1,
+      "problemId": 1,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 2,
+      "problemId": 2,
+      "revisionStage": 2,
+      "lastRevisedAt": "2026-08-04T11:00:00Z",
+      "nextRevisionAt": "2026-08-07T11:00:00Z"
+    },
+    {
+      "id": 3,
+      "problemId": 3,
+      "revisionStage": 1,
+      "lastRevisedAt": null,
+      "nextRevisionAt": "2026-08-06T09:15:00Z"
+    },
+    {
+      "id": 4,
+      "problemId": 4,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 5,
+      "problemId": 5,
+      "revisionStage": 2,
+      "lastRevisedAt": "2026-07-30T10:00:00Z",
+      "nextRevisionAt": "2026-08-05T10:00:00Z"
+    },
+    {
+      "id": 6,
+      "problemId": 6,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 7,
+      "problemId": 7,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 8,
+      "problemId": 8,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 9,
+      "problemId": 9,
+      "revisionStage": 1,
+      "lastRevisedAt": null,
+      "nextRevisionAt": "2026-08-07T15:20:00Z"
+    },
+    {
+      "id": 10,
+      "problemId": 10,
+      "revisionStage": 3,
+      "lastRevisedAt": "2026-08-03T12:45:00Z",
+      "nextRevisionAt": "2026-08-10T12:45:00Z"
+    },
+    {
+      "id": 11,
+      "problemId": 11,
+      "revisionStage": 1,
+      "lastRevisedAt": null,
+      "nextRevisionAt": "2026-08-08T10:15:00Z"
+    },
+    {
+      "id": 12,
+      "problemId": 12,
+      "revisionStage": 0,
+      "lastRevisedAt": null,
+      "nextRevisionAt": null
+    },
+    {
+      "id": 13,
+      "problemId": 13,
+      "revisionStage": 1,
+      "lastRevisedAt": null,
+      "nextRevisionAt": "2026-08-09T09:20:00Z"
+    }
+  ]
+}
