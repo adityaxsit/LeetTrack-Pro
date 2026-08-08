@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Problems.module.css";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 function Problems() {
   const [problems, setProblems] = useState([]);
@@ -80,20 +81,7 @@ function Problems() {
   });
 
   if (loading) {
-    return (
-      <div
-        className="spinner-grow"
-        style={{
-          width: "3rem",
-          height: "3rem",
-          alignSelf: "center",
-          marginTop: "2rem",
-        }}
-        role="status"
-      >
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   const totalSolved = problems.length;

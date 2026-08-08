@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Revision.module.css";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 function Revision() {
   const [problems, setProblems] = useState([]);
@@ -20,21 +21,35 @@ function Revision() {
   }, []);
 
   if (loading) {
-    return (
-      <div
-        className="spinner-grow"
-        style={{
-          width: "3rem",
-          height: "3rem",
-          alignSelf: "center",
-          marginTop: "2rem",
-        }}
-        role="status"
-      >
-        <span className="visually-hidden">Loading...</span>
-      </div>
+  return <LoadingSpinner />;
+}
+
+  //mark reviewed
+
+  const handleMarkReviewed = (revisionId) => {
+    setRevisions((previousRevisions) =>
+      previousRevisions.map((revision) => {
+        if (revision.id !== revisionId) {
+          return revision;
+        }
+
+        const today = new Date();
+
+        const nextRevision = new Date(today);
+
+        nextRevision.setDate(
+          nextRevision.getDate() + revision.revisionStage * 3,
+        );
+
+        return {
+          ...revision,
+          revisionStage: revision.revisionStage + 1,
+          lastRevisedAt: today.toISOString(),
+          nextRevisionAt: nextRevision.toISOString(),
+        };
+      }),
     );
-  }
+  };
 
   // CONNECT PROBLEM DATA WITH REVISION DATA
   const revisionProblems = revisions
@@ -162,8 +177,6 @@ function Revision() {
 
       {/* FILTER */}
 
-      
-
       {/* MAIN CONTENT */}
 
       <section className={styles.layoutGrid}>
@@ -176,12 +189,15 @@ function Revision() {
               <span>{sortedProblems.length} problems</span>
             </div>
             <div className={styles.controls}>
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="queue">Today's Queue</option>
-              <option value="due">Due Today</option>
-              <option value="overdue">Overdue</option>
-              <option value="upcoming">Upcoming</option>
-            </select>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="queue">Today's Queue</option>
+                <option value="due">Due Today</option>
+                <option value="overdue">Overdue</option>
+                <option value="upcoming">Upcoming</option>
+              </select>
             </div>
           </div>
 
@@ -251,7 +267,10 @@ function Revision() {
                 {/* ACTIONS */}
 
                 <div className={styles.actionRow}>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleMarkReviewed(problem.revisionId)}
+                  >
                     <i className={`bi bi-check2 ${styles.reviewIcon}`}></i>
                     Mark Reviewed
                   </button>

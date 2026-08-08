@@ -1,0 +1,15 @@
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 300px;
+}
+
+.spinnerContainer :global(.spinner-grow) {
+  width: 3rem;
+  height: 3rem;
+
+  color: var(--lava-soft);
+}
